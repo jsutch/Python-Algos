@@ -1,10 +1,11 @@
 #!/usr/local/bin/python
 
-
+#Bubble Sort in python
 my_list = [10,21,4,12,33,2,1,27,40]
 
 loop = 0
 iter = 0
+
 
 print my_list
 for iter in range(0,len(my_list) -1):
