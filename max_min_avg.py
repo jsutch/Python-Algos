@@ -19,6 +19,6 @@ while loop < len(my_array):
 		min = num	
 	loop += 1
 
-print "Max is" , maxint
-print "Min is", min
-print "Average is" , sum(my_array)/len(my_array)	
+print("Max is" , maxint)
+print("Min is", min)
+print("Average is" , sum(my_array)/len(my_array))	

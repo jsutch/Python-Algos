@@ -9,4 +9,4 @@ while loop < len(my_array):
 	if highnum < num:
 		highnum = num
 	loop += 1
-print highnum		
+print(highnum)		

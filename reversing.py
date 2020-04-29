@@ -7,14 +7,14 @@
 my_array = [-3, 3, -50, 10, 14, -2, 21, -4]
 loop = 0
 
-print my_array
+print(my_array)
 
 for loop in range(0,len(my_array) / 2):
 	temp = my_array[loop]
 	# set a[0] to a[1]
 	my_array[loop] = my_array[len(my_array) - 1 - loop]
 	my_array[len(my_array) - 1 - loop] = temp
-	print loop
+	print(loop)
 	#print my_array
 	loop += 1
-print my_array
+print(my_array)

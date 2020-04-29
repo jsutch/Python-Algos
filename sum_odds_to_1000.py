@@ -9,4 +9,4 @@ for num in range(0,1000):
 	else: 	
 		#print num
 		nums += num
-print nums
+print(nums)

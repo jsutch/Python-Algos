@@ -10,6 +10,6 @@ def min_max_avg(a_list):
 	}
 
 for x in range(len(a_list)):
-	print a_list[x]
+	print(a_list[x])
 
 min_max_avg([3,5,10,2,9,12])

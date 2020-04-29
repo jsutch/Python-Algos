@@ -10,4 +10,4 @@ while loop < len(my_array):
 	if num < 0:
 		my_array[loop] = 'dojo'
 	loop += 1
-print my_array		
+print(my_array)		

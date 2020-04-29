@@ -11,4 +11,4 @@ while loop < len(my_array):
 	#print sum
 	loop += 1
 avg = (sum / len(my_array))
-print avg	
+print(avg)	

@@ -5,11 +5,11 @@
 
 my_array = [-3, 3, 50, 10, 14, 2, 21, 4]
 
-print my_array
+print(my_array)
 
 last = len(my_array) - 1 
 temp = my_array[0]
 my_array[0] = my_array[last]
 my_array[last] = temp
 
-print my_array
+print(my_array)

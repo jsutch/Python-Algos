@@ -11,4 +11,4 @@ while loop < len(my_array):
 		output.append(num)
 	loop += 1
 
-print "from the list", my_array, "only" , output ,"are greater than", y
+print("from the list", my_array, "only" , output ,"are greater than", y)

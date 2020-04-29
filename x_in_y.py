@@ -7,6 +7,6 @@ my_array = [-3, 3, 50, 10, 14, 2, 21, 4]
 x = 10
 y = 2
 
-print "before" ,my_array
+print("before" ,my_array)
 my_array.insert(y,x)
-print "after" ,my_array
+print("after" ,my_array)

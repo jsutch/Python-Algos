@@ -5,5 +5,5 @@ loop = 0
 
 while loop < len(my_array):
 	num = my_array[loop]
-	print "The Square of", num ,"is" , num * num
+	print("The Square of", num ,"is" , num * num)
 	loop += 1

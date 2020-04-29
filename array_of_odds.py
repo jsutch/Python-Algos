@@ -7,4 +7,4 @@ for num in range(0,256):
 		pass
 	else:
 		my_array.append(num)
-print my_array			
+print(my_array)			

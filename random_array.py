@@ -9,4 +9,4 @@ for loop in range(0,9):
 	num = random.randrange(1,100)
 	my_array.append(num)
 	loop += 1
-print my_array	
+print(my_array)	

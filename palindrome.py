@@ -22,4 +22,4 @@ def palindrome(word):
 
 
 #print palindrome('amanaplanacanalpanama')
-print palindrome('a man a plan a canal panama')
+print(palindrome('a man a plan a canal panama'))
