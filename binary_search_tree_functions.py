@@ -57,21 +57,20 @@ def minvalueval(node):
         cursor = cursor.left  
     return cursor.val
 
+def aslist(node):
+    """
+    return inorder bst as a list. needed for randomval
+    """
+        if node is None:
+            return []
+        return aslist(node.left) + [node.val] + aslist(node.right)
+
 def randomval(root):
     """
     return a random value from from the bst.
-    utility to test delete. Currently borked.
+    utility to test delete. 
     """
-    myarr = []
-    cursor = root
-    while(cursor.left is not None):
-        myarr.append(cursor.val)
-        cursor = cursor.left
-    myarr.append(cursor.val)
-    while(cursor.right is not None):
-        myarr.append(cursor.val)
-        cursor = cursor.right
-    return random.choice(myarr)
+    return random.choice(aslist(root))
     
 def delete(root, key):
     """
@@ -223,20 +222,22 @@ def balance(root):
 
 
 
-
-
 # Helper code
 # create and  populate a tree
-meh = BSTNode(500)
-[insert(meh, BSTNode(random.randint(1,1024))) for x in range(20)]
-
+"""
+foo = BSTNode(500)
+[insert(foo, BSTNode(random.randint(1,1024))) for x in range(20)]
+"""
 
 # test harness
-
+# create tree
 foo = BSTNode(500)
 [insert(foo, BSTNode(random.randint(1,1024))) for x in range(20)]
 print("printlevels")
 printlevel(foo)
+
+# Traversing
+print("Traversing Utils")
 print("DFS traversing")
 print("inorder traverse")
 inorder(foo)
@@ -246,19 +247,27 @@ print("postorder traverse")
 postorder(foo)
 print("BFS traversing")
 levelorder(foo)
+# Balancing
 print("is balanced?")
 isbalanced(foo)
 foo = balance(foo)
 isbalanced(foo)
 print("inorder - balanced")
 inorder(foo)
-printlevel(foo)
+print(aslist((foo)))
 
-# Deletes harness - not working yet
-# grab random value from the tree
-# randomvalue = randval(foo)
-# foo = delete(foo, randomvalue)
-# search(foo, randomvalue)
-# printlevel(foo)
-# isbalanced(foo)
+# Deletes
+print("show bst as a list")
+print(aslist(foo))
+randvalue = randomval(foo)
+print(f'grabbing random value <<{randvalue}>> from the bst for deletion')
+print('verify value from search')
+print(search(foo, randvalue))
+print("Delete the value from the bst")
+foo = delete(foo, randvalue)
+print(f'search for value >>{randvalue}<< in bst')
+print(search(foo, randvalue))
+print(aslist(foo))
+print('is the new tree balanced?')
+print(isbalanced(foo))
 
