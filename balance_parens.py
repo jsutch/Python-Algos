@@ -7,6 +7,7 @@ test5='()' #balanced
 test6='({<>})' #balanced
 test7='(h[e{lo}!]~)' #balanced
 test8='[](){}<>' #balanced, no leftovers
+test8='}{][><)(' #balanced, no leftovers, but out of order
 
 
 def balanced(string):
@@ -37,3 +38,4 @@ print("Test 5", balanced(test5))
 print("Test 6", balanced(test6))
 print("Test 7", balanced(test7))
 print("Test 8", balanced(test8))
+print("Test 9", balanced(test8))
