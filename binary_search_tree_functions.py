@@ -1,3 +1,5 @@
+import random
+
 class BSTNode(object):
     def __init__(self, key):
         self.val = key
@@ -61,9 +63,9 @@ def aslist(node):
     """
     return inorder bst as a list. needed for randomval
     """
-        if node is None:
-            return []
-        return aslist(node.left) + [node.val] + aslist(node.right)
+    if node is None:
+        return []
+    return aslist(node.left) + [node.val] + aslist(node.right)
 
 def randomval(root):
     """
@@ -183,7 +185,7 @@ def printlevel(root):
 def isbalanced(root):
     if root is None:
         return True
-    return is_balanced(root.right) and is_balanced(root.left) and abs(height(root.left) - height(root.right)) <= 1
+    return isbalanced(root.right) and isbalanced(root.left) and abs(height(root.left) - height(root.right)) <= 1
 
 def store(root, nodearr):
     """
@@ -192,9 +194,9 @@ def store(root, nodearr):
     """
     if not root:
         return
-    store(root.left)
+    store(root.left, nodearr)
     nodearr.append(root.val)
-    store(root.right)
+    store(root.right, nodearr)
 
 
 def build(nodearr):
@@ -206,8 +208,8 @@ def build(nodearr):
         return None
     mid = len(nodearr) // 2
     node = BSTNode(nodearr[mid])
-    node.left = newBST(nodearr[:mid])
-    node.right = newBST(nodearr[mid + 1:])
+    node.left = BSTNode(nodearr[:mid])
+    node.right = BSTNode(nodearr[mid + 1:])
     return node
 
 def balance(root):
@@ -218,7 +220,7 @@ def balance(root):
     """
     nodes = []
     store(root, nodes)
-    return newBST(nodes)
+    return BSTNode(nodes)
 
 
 
@@ -270,4 +272,3 @@ print(search(foo, randvalue))
 print(aslist(foo))
 print('is the new tree balanced?')
 print(isbalanced(foo))
-
