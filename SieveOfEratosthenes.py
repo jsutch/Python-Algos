@@ -1,4 +1,7 @@
 def primes_sieve(limit):
+    """
+    for each number in an array, if it has factors other than 1 or itself, remove it from the list
+    """
     mylimit = limit+1
     primes = list(range(2, mylimit))
     
