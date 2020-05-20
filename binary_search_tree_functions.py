@@ -220,7 +220,7 @@ def balance(root):
     """
     nodes = []
     store(root, nodes)
-    return BSTNode(nodes)
+    return build(nodes)
 
 
 
