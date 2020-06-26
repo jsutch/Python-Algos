@@ -10,6 +10,8 @@ class BSTNode(object):
 def insert(root, node):
     """
     insert the given key into the BST
+    usage: insert(bsttree, BSTNode(val))
+    insert(foo, BSTNode(random.randint(1,4096)))
     """
     # case where root is empty
     if root is None:
@@ -204,13 +206,14 @@ def build(nodearr):
     rebuild the bst from the inorder array
     needed by balance
     """
-    if not noderarr:
+    if not nodearr:
         return None
     mid = len(nodearr) // 2
     node = BSTNode(nodearr[mid])
-    node.left = BSTNode(nodearr[:mid])
-    node.right = BSTNode(nodearr[mid + 1:])
+    node.left = build(nodearr[:mid])
+    node.right = build(nodearr[mid + 1:])
     return node
+
 
 def balance(root):
     """
