@@ -30,7 +30,7 @@ def merge(arr):
             arr[k] = right[j]
             j+=1
             k+=1
-
+    return arr
 
 
 if __name__ == '__main__':
