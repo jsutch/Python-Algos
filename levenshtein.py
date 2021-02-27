@@ -47,7 +47,43 @@ def levenshtein(seq1, seq2):
 #
 #In [180]: levenshtein(name2,name5)
 #Out[180]: 15.0
+"""
+Some expansion on this and using lower() to improve scores
+In [42]: name3='donniedarko.mp4'
 
+In [43]: name44='donniedarkotheatrical.mp4'
+
+In [44]: name4='Donnie_Darko-theatrical.m4v'
+
+In [45]: name5='Donnie_Darko-directors.m4v'
+
+In [46]: name55='donniedarkodirectors.mp4'
+
+In [48]: name2.lower()
+Out[48]: 'donnie_darko.m4v'
+
+In [49]: lev(name2,name3)
+Out[49]: 5.0
+
+In [50]: lev(name2.lower(),name3.lower())
+Out[50]: 3.0
+
+In [51]: lev(name4,name44)
+Out[51]: 6.0
+
+In [52]: lev(name4.lower(),name44.lower())
+Out[52]: 4.0
+
+The counter example:
+	In [53]:  name6='The_Darjeeling_Limited.m4v'
+
+	In [54]: lev(name2,name6)
+	Out[54]: 19.0
+
+	In [55]: lev(name2.lower(),name6.lower())
+	Out[55]: 19.0
+
+"""
 
 # handle writing in binary to handle utf-8/cyrillic letters
 # verbose - print before write
@@ -61,4 +97,5 @@ with open('output.csv',mode='a',encoding="utf-8-sig") as f:
              f.write(cmp)
 
 
-========
+
+
