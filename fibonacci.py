@@ -94,10 +94,10 @@ def memofibber(n, fibs):
     worker
     """
     if n not in fibs:
-        fib1 = memofibber(n-1, fibs)
-        fib2 = memofibber(n-2, fibs)
+        fib1,fib2 = memofibber(n-1, fibs), memofibber(n-2, fibs)
         fibs[n] = fib1 + fib2
     return fibs[n]
+
 """
 In [37]: times = {}
     ...: for x in [10,100,1000]:
