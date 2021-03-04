@@ -18,3 +18,11 @@ def removeNegs(array):
 
 
 removeNegs(my_array)
+
+
+# Simpler method with list comprehension
+In [192]: my_array = [-3, 3, -50, 10, 14, -2, 21, -4]
+
+In [193]: [x for x in my_array if x > 0]
+Out[193]: [3, 10, 14, 21]
+
