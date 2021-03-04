@@ -1,13 +1,14 @@
 
 
-def x_at_y(arr,x, y):
+def x_at_y(arr,n, i):
     """
     given an array, insert 'x' element at position 'y', preserving order
+	x  = n, y = i
     """
     arr.append(0)
-    for z in range(len(arr) - 1, y, -1):
+    for z in range(len(arr) - 1, i, -1):
        myarr[z] = myarr[z - 1]
-       myarr[y] = x
+       myarr[i] = n
     return myarr
 ...:
 
