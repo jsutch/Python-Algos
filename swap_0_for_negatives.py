@@ -10,3 +10,15 @@ while loop < len(my_array):
 		my_array[loop] = 0
 	loop += 1
 print(my_array)	
+
+
+# with list comprehension:
+In [325]: def neg_to_zero(n):
+     ...:     if n < 0:
+     ...:         return 0
+     ...:     else:
+     ...:         return n
+     ...:
+
+In [326]: [neg_to_zero(x) for x in my_array]
+Out[326]: [0, 3, 0, 10, 14, 0, 21, 0]
