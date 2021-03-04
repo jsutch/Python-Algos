@@ -12,3 +12,13 @@ while loop < len(my_array):
 	loop += 1
 avg = (sum / len(my_array))
 print(avg)	
+
+
+# simpler function with internal methods:
+
+def avg(arr):
+	return sum(arr) / len(arr) 
+
+
+# or just
+print(sum(arr) / len(arr))
