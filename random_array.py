@@ -10,3 +10,7 @@ for loop in range(0,9):
 	my_array.append(num)
 	loop += 1
 print(my_array)	
+
+
+# a more pythonic way to do this with list comprehension
+myarr = [random.randint(1,101) for x in range(11)]

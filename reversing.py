@@ -18,3 +18,17 @@ for loop in range(0,len(my_array) / 2):
 	#print my_array
 	loop += 1
 print(my_array)
+
+
+# The more pythonic way is to use the [::-1] slice/index
+In [183]: my_array = [-3, 3, -50, 10, 14, -2, 21, -4]
+# last element
+In [184]: my_array[-1]
+Out[184]: -4
+# last elements in slide
+In [185]: my_array[:-1]
+Out[185]: [-3, 3, -50, 10, 14, -2, 21]
+# reverse the array
+In [186]: my_array[::-1]
+Out[186]: [-4, 21, -2, 14, 10, -50, 3, -3]
+
