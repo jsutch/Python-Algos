@@ -28,6 +28,8 @@ def insert(root, node):
                 root.left = node
             else:
                 insert(root.left, node)
+
+
 def search(root, key):
     """
     Does key exist in the BST?
@@ -51,6 +53,7 @@ def minvalue(node):
         cursor = cursor.left  
     return cursor  
 
+
 def minvalueval(node): 
     """
     return the smallest valued node's value for testing
@@ -60,6 +63,7 @@ def minvalueval(node):
     while(cursor.left is not None): 
         cursor = cursor.left  
     return cursor.val
+
 
 def aslist(node):
     """

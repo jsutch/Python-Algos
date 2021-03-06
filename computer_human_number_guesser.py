@@ -44,12 +44,17 @@ def outcome(guess):
     who won?
     """
     global turn,inplay
+    if guess > num:
+        outcome = 'too high'
+    else:
+        outcome = 'too low'
+
     if guess == num:
         inplay = False
         return turn, 'correctly guessed', num
     else:
         turn = otherguy()
-        return f"{guess} was not correct. {turn}'s turn"
+        return f"{guess} was {outcome}. Now it's  {turn}'s turn"
 
 def newgame():
     """
@@ -71,8 +76,8 @@ def main():
         elif turn =='computer':
             guess = compguess(lastguess)
             lastguess = guess
-            print(outcome(guess))
-            print(lastguess, guesses, len(guesses), 'moves so far')
+            print(f"{turn}'s",outcome(guess))
+            print("Computer's tally",lastguess, guesses, len(guesses), 'moves so far')
 
 
 if __name__ == '__main__':
@@ -82,7 +87,7 @@ if __name__ == '__main__':
     print("if you miss, the computer will try.")
     print("*" *20)
     newgame()
-	# for debugging
+    # for debugging
     # print(num, turn, inplay, guesses)
     while True:
         if inplay == True:
