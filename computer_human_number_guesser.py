@@ -1,3 +1,9 @@
+"""
+ a turn based number guesser player between a human and the computer. 
+ At numbers < 100, The computer should solve the problem in 5 turns or less
+ Usage:  python computer_human_number_guesser.py
+"""
+
 import random 
 
 def getguess():
@@ -50,7 +56,7 @@ def newgame():
     set the global variables for a new game
     """
     global num, turn, inplay, guesses, lastguess, lo, hi
-    num, turn, inplay, guesses, lastguess, lo, hi = random.randint(1,101),'person',True,[], random.randint(1,101), 1, 100
+    num, turn, inplay, guesses, lastguess, lo, hi = random.randint(1,101),'person',True,[], random.randint(30,70), 1, 100
 
 
 def main():
@@ -66,13 +72,18 @@ def main():
             guess = compguess(lastguess)
             lastguess = guess
             print(outcome(guess))
-            print(lastguess, guesses)
+            print(lastguess, guesses, len(guesses), 'moves so far')
 
 
 if __name__ == '__main__':
+    print("*" *20)
     print("starting game")
+    print("you're playing the computer - enter a number between 1 and 100 to take your turn.")
+    print("if you miss, the computer will try.")
+    print("*" *20)
     newgame()
-    print(num, turn, inplay, guesses)
+	# for debugging
+    # print(num, turn, inplay, guesses)
     while True:
         if inplay == True:
             main()
