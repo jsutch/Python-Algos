@@ -4,8 +4,8 @@
 import random 
 
 def guesser(n):
-    #lo, hi = 1, 100
-    lo, hi = 30, 70
+    lo, hi = 1, 100
+    #lo, hi = 30, 70
     guesses = 0
     guess = random.randint(1,100)
     while guess != n:
