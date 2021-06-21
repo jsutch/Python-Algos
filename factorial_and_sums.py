@@ -7,14 +7,14 @@ def rFactorial(num):
 for i in range(1,6):
 	print rFactorial(i)
 
-def rSum(num):
-	if num == 1:
-		return 1
-	else:
-		return rSum(num -1) + num
+In [33]: def rsum(n):
+    ...:     if n == 0:
+    ...:         return 0
+    ...:     return rsum(n -1) + n
+    ...:
 
-for i in range(1,6):
-	print rSum(i)
+In [34]: [rsum(x) for x in range(11)]
+Out[34]: [0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
 
 #Iterative Factorial
 for x in range(1,11):
