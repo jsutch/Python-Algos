@@ -1,6 +1,11 @@
 import random
 
 class BSTNode(object):
+    """
+    A node has a value,a left object and a right object.
+    Create a tree by creating a new single node:
+    usage: foo = BSTNode(512)
+    """
     def __init__(self, key):
         self.val = key
         self.left = self.right =  None
@@ -33,6 +38,8 @@ def insert(root, node):
 def search(root, key):
     """
     Does key exist in the BST?
+    usage: search(foo, 555)
+    returns: value or False
     """
     if root is None:
         return False
@@ -175,7 +182,11 @@ def givenlevel(root, level):
 
 def levelorder(root):
     """
-    a BFT that prints all nodes per level
+    levelorder is a Breadth First Traversal that prints all nodes per-level
+    and iterates through the levels
+    relies on height() and givenlevel() functions
+    print all node values at level 1, then level 2, etc
+    usage: levelorder(foo)
     """
     h = height(root)
     for i in range(1, h + 1):
@@ -241,6 +252,12 @@ foo = BSTNode(500)
 # test harness
 # create tree
 foo = BSTNode(500)
+In [425]: type(foo)
+Out[425]: <class '__main__.BSTNode'>
+
+In [426]: foo.val
+Out[426]: 500
+
 [insert(foo, BSTNode(random.randint(1,1024))) for x in range(20)]
 print("printlevels")
 printlevel(foo)
