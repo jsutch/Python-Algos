@@ -121,3 +121,18 @@ Out[38]:
  'memo-1000': 0.0008214979998228955}
 
 """
+
+
+
+# run memofib without a wrapper by populating the dict. Also - typehinting
+def memofib1(n:int, fibs:dict={0:0,1:1})->dict:
+    """
+    handle higher values in recursion with memoization.
+    only operate if the val isn't in the dict. populate the dict with every result
+    always pass a basic dict for 0 and 1
+    e,g, memofib(5,{0:0,1:1})
+    """
+    if n not in fibs:
+        fib1, fib2 = memofib(n -1, fibs), memofib(n -2,fibs)
+        fibs[n] = fib1 + fib2
+    return fibs[n]
