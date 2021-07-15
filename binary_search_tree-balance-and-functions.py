@@ -204,6 +204,13 @@ def isbalanced(root):
         return True
     return isbalanced(root.right) and isbalanced(root.left) and abs(height(root.left) - height(root.right)) <= 1
 
+#
+# breaking this into 3 parts - balance() is the wrapper, store() builds an inorder array of the values 
+# and build() recursively rebuilds the inorder array into a balanced tree
+# handing back to balance() to return the BST object
+# creating an balanced BST from an unbalanced BST looks like this:
+# newobject = balance(<BST object>)
+#
 def store(root, nodearr):
     """
     recreate the bst as an inorder array.
