@@ -17,32 +17,34 @@ In [34]: [rsum(x) for x in range(11)]
 Out[34]: [0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
 
 #Iterative Factorial
+# simple loop
 for x in range(1,11):
 	sum = 1
 	for loop in range(1,x + 1):
 		sum *= loop
-	print x, sum 
+	print(x, sum)
 
 #Iterative Sum
+# simple loop
 for x in range(1,6):
     sum = 0
     for loop in range(1,x + 1):
             sum += loop
-    print x, sum
+    print(x, sum)
 
 def iSum(num):
 	mynum = num + 1
-	for x in xrange(1,mynum):
+	for x in range(1,mynum):
 		sum = 0
-		for loop in xrange(1,x + 1):
+		for loop in range(1,x + 1):
 			sum += loop
 	return sum 
 
 def iFac(num):
 	mynum = num + 1
-	for x in xrange(1,mynum):
+	for x in range(1,mynum):
 		sum = 1
-		for loop in xrange(1,x + 1):
+		for loop in range(1,x + 1):
 			sum *= loop
 	return sum 
 
