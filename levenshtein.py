@@ -27,7 +27,7 @@ def levenshtein(seq1, seq2):
 
 
 # helper test:
-# evaluate all the files in a directory and compte the distance for the same files presuming differing naming conventions.
+# evaluate all the files in a directory and compute the distance for the same files presuming differing naming conventions.
 # and write them out into a csv file. Can then filter by lev_distance and find dupes
 #
 # e.g.

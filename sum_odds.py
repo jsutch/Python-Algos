@@ -7,7 +7,6 @@ for num in range(0,1000):
 	if num % 2 == 0:
 		pass
 	else: 	
-		#print num
 		nums += num
 print(nums)#!/usr/local/bin/python
 
@@ -18,7 +17,6 @@ for num in range(0,5001):
 	if num % 2 == 0:
 		pass
 	else: 	
-		#print num
 		nums += num
 print(nums)
 

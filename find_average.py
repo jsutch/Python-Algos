@@ -6,9 +6,7 @@ sum = 0
 
 while loop < len(my_array):
 	num = my_array[loop]
-	#print num
 	sum += num
-	#print sum
 	loop += 1
 avg = (sum / len(my_array))
 print(avg)	

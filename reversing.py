@@ -15,7 +15,7 @@ for loop in range(0,len(my_array) / 2):
 	my_array[loop] = my_array[len(my_array) - 1 - loop]
 	my_array[len(my_array) - 1 - loop] = temp
 	print(loop)
-	#print my_array
+	#print(my_array) # debug
 	loop += 1
 print(my_array)
 

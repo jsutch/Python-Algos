@@ -6,5 +6,10 @@ def ispal(word):
             return False
     return True
 
-print palindrome('amanaplanacanalpanama')
-print(palindrome('a man a plan a canal panama'))
+# tests
+# true test
+print(ispal('amanaplanacanalpanama'))
+# are spaces working
+print(ispal('a man a plan a canal panama'))
+# false test
+print(ispal('yo momma'))

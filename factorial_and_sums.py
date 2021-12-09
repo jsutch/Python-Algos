@@ -5,7 +5,7 @@ def rFactorial(num):
 		return rFactorial(num - 1) * num
 
 for i in range(1,6):
-	print rFactorial(i)
+	print(rFactorial(i))
 
 In [33]: def rsum(n):
     ...:     if n == 0:

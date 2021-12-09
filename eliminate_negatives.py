@@ -9,10 +9,10 @@ def removeNegs(array):
 	loop = 0
 	print("Original Array is" ,my_array)
 	while loop < len(my_array):
-		#print loop	
+		#print(loop) # debug
 		if my_array[loop] < 0:
 			my_array.remove(my_array[loop])
-		#print my_array
+		#print(my_array) # debug
 		loop += 1	
 	print("Anti-Negative array is: ", my_array)
 

@@ -24,7 +24,7 @@ def balanced(string):
                 return "Unbalanced - stack is empty", stack #unbalanced
             else:
                 last=stack.pop()
-                # print "pop, last char", (last, c)
+                # print("pop, last char", (last, c))
                 if (last, c) not in match:
                     return 0, "Unbalanced - stack may have leftovers", stack
     return 1, "Balanced - stack should be empty", stack

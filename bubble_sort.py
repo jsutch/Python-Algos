@@ -17,13 +17,13 @@ temp = 0
 print("Original List", my_list)
 for loop in range(len(my_list) -1, 0, -1):
 	for x in range(loop):
-		#print "Loop number" , loop, "Iteration", x
-		#print "Compare", my_list[x], my_list[x+1]
+		#print("Loop number" , loop, "Iteration", x)
+		#print("Compare", my_list[x], my_list[x+1])
 		if my_list[x] > my_list[x + 1]:
 			temp = my_list[x]
 			my_list[x] = my_list[x + 1]
 			my_list[x+1] = temp
-		#print my_list	
+		#print(my_list)
 print("Sorted List", my_list)
 
 
