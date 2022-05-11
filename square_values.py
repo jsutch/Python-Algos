@@ -23,4 +23,8 @@ Out[191]: [9, 9, 2500, 100, 196, 4, 441, 16]
 In [189]: list(map(lambda x: x**2, my_array))
 Out[189]: [9, 9, 2500, 100, 196, 4, 441, 16]
 
+# a square function using a lambda
+In [149]: square = lambda x: x ** 2
+In [150]: [square(x) for x in range(11)]
+Out[150]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
