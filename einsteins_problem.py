@@ -79,3 +79,37 @@ for i in range(1,6):
     for x in solution:
         if solution[x] == i:
             print(str(i), x)
+
+
+"""
+apply the lists
+adding constraints
+getting solutions
+printing list
+1 cao
+1 norwegian
+1 yellow
+1 cat
+1 water
+2 horse
+2 blue
+2 danish
+2 tea
+2 davidoff
+3 red
+3 british
+3 montecristo
+3 bird
+3 milk
+4 white
+4 swedish
+4 dog
+4 beer
+4 partagas
+5 green
+5 coffee
+5 german
+5 cohiba
+5 fish
+"""
+
