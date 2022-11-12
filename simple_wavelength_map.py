@@ -1,3 +1,7 @@
+"""
+not a script - simple set of functions to calculate RF antenna/dipole element length for HF frequencies
+"""
+
 In [40]: def wavelength(n):
     ...:     return round(300 / n,2)
     ...:
