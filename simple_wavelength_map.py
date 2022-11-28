@@ -70,4 +70,27 @@ In [52]: for x in range(2,51):
 48Mhz is 6.25 meter wavelength. half wave == 3.12 meters or 10.24 feet, quarter wave 1.56 meters or 5.12 feet
 49Mhz is 6.12 meter wavelength. half wave == 3.06 meters or 10.04 feet, quarter wave 1.53 meters or 5.02 feet
 50Mhz is 6.0 meter wavelength. half wave == 3.0 meters or 9.84 feet, quarter wave 1.5 meters or 4.92 feet
+
+
+This can be also flipped for wavelength:
+add a function for wavelength to frequency
+In [63]: def meters_to_freq(n):
+    ...:     return 300 / n
+    ...:
+
+popular HF ham bands (in wavelength)
+In [64]: for x in [6,10,20,30,40,60,80,160]:
+    ...:     freq = meters_to_freq(x)
+    ...:     print(f"{x}m wavelength is {freq}Mhz frequency. half wave == {halfwave(wavelength(freq))} meters or {metersToFeet(halfwave(wavelength(freq)))} feet, quarter wave {quarterwave(wavelength(freq))} meters or {metersToFeet(quarterwave(wavelength(freq)))} feet")
+    ...:
+
+6m wavelength is 50.0 Mhz frequency. half wave == 3.0 meters or 9.84 feet, quarter wave 1.5 meters or 4.92 feet
+10m wavelength is 30.0 Mhz frequency. half wave == 5.0 meters or 16.4 feet, quarter wave 2.5 meters or 8.2 feet
+20m wavelength is 15.0 Mhz frequency. half wave == 10.0 meters or 32.81 feet, quarter wave 5.0 meters or 16.4 feet
+30m wavelength is 10.0 Mhz frequency. half wave == 15.0 meters or 49.21 feet, quarter wave 7.5 meters or 24.61 feet
+40m wavelength is 7.5 Mhz frequency. half wave == 20.0 meters or 65.62 feet, quarter wave 10.0 meters or 32.81 feet
+60m wavelength is 5.0 Mhz frequency. half wave == 30.0 meters or 98.43 feet, quarter wave 15.0 meters or 49.21 feet
+80m wavelength is 3.75 Mhz frequency. half wave == 40.0 meters or 131.23 feet, quarter wave 20.0 meters or 65.62 feet
+160m wavelength is 1.875 Mhz frequency. half wave == 80.0 meters or 262.47 feet, quarter wave 40.0 meters or 131.23 feet
+
 '''
