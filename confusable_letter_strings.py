@@ -1,5 +1,5 @@
 """
-not a script. Example of using the 'confusable' library to convert english strings to polyglot dictionaries
+not a script. Example of using the 'confusable' library to convert english strings to englishesque-looking strings with polyglot dictionaries
 """
 
 In [92]: from confusables import confusable_characters
