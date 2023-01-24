@@ -1,5 +1,6 @@
 """
 not a script
+
 """
 # list all combinations - dont' find uniqueness
 In [112]: mylist = [1,'alice',2,'bob',3,'charlie',4,'david',5,'eve']
