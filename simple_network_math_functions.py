@@ -46,43 +46,42 @@ Out[36]:
 
 def symkey(n):
    """Sum of n Natural Numbers - total number of connections required in a full mesh"""
-   return n * (n -1) / 2
+   return f"required symmetric keys for {n} nodes", n * (n -1) / 2
 
 """
-example of numbers of connections needed for a full mesh
-In [38]: [symkey(x) for x in range(33)]
-Out[38]:
-[0.0,
- 0.0,
- 1.0,
- 3.0,
- 6.0,
- 10.0,
- 15.0,
- 21.0,
- 28.0,
- 36.0,
- 45.0,
- 55.0,
- 66.0,
- 78.0,
- 91.0,
- 105.0,
- 120.0,
- 136.0,
- 153.0,
- 171.0,
- 190.0,
- 210.0,
- 231.0,
- 253.0,
- 276.0,
- 300.0,
- 325.0,
- 351.0,
- 378.0,
- 406.0,
- 435.0,
- 465.0,
- 496.0]
+In [4]: [symkey(x) for x in range(33)]
+Out[4]:
+[('required symmetric keys for 0 nodes', 0.0),
+ ('required symmetric keys for 1 nodes', 0.0),
+ ('required symmetric keys for 2 nodes', 1.0),
+ ('required symmetric keys for 3 nodes', 3.0),
+ ('required symmetric keys for 4 nodes', 6.0),
+ ('required symmetric keys for 5 nodes', 10.0),
+ ('required symmetric keys for 6 nodes', 15.0),
+ ('required symmetric keys for 7 nodes', 21.0),
+ ('required symmetric keys for 8 nodes', 28.0),
+ ('required symmetric keys for 9 nodes', 36.0),
+ ('required symmetric keys for 10 nodes', 45.0),
+ ('required symmetric keys for 11 nodes', 55.0),
+ ('required symmetric keys for 12 nodes', 66.0),
+ ('required symmetric keys for 13 nodes', 78.0),
+ ('required symmetric keys for 14 nodes', 91.0),
+ ('required symmetric keys for 15 nodes', 105.0),
+ ('required symmetric keys for 16 nodes', 120.0),
+ ('required symmetric keys for 17 nodes', 136.0),
+ ('required symmetric keys for 18 nodes', 153.0),
+ ('required symmetric keys for 19 nodes', 171.0),
+ ('required symmetric keys for 20 nodes', 190.0),
+ ('required symmetric keys for 21 nodes', 210.0),
+ ('required symmetric keys for 22 nodes', 231.0),
+ ('required symmetric keys for 23 nodes', 253.0),
+ ('required symmetric keys for 24 nodes', 276.0),
+ ('required symmetric keys for 25 nodes', 300.0),
+ ('required symmetric keys for 26 nodes', 325.0),
+ ('required symmetric keys for 27 nodes', 351.0),
+ ('required symmetric keys for 28 nodes', 378.0),
+ ('required symmetric keys for 29 nodes', 406.0),
+ ('required symmetric keys for 30 nodes', 435.0),
+ ('required symmetric keys for 31 nodes', 465.0),
+ ('required symmetric keys for 32 nodes', 496.0)]
 """
