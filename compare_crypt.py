@@ -1,6 +1,5 @@
-# neanderthal brute force hash comparison v.0.0.4
+# neanderthal brute force hash comparison v.0.0.5
 #
-# NEW TIMING STUFF UNTESTED
 # some very old password databases using DES crypt(3) hashes will truncate the stored string from 13 chars down to 10 chars, including a 2 byte salt at the beginning
 # e.g.
 # properly formatted with be:
@@ -19,15 +18,17 @@
 # into smaller chunks to not overload local memory. this was faster than rewriting a good mangler.
 # ProTip: as modern testers we get used to baseline minumum lengths and complexity requirements - this was not a baseline with much older systems
 # When generating precompiled lists you will also want to run the permutations of alphanumerics from 1-7 characters and add them to your inputs.
-# in the test I ran more than 60% of the accounts utilized a single character.
+# in the test I ran:
+# More than 60% of the accounts utilized a single character, 15% unmodified dictionary words, 5% well known passwords, and 5% number permutations. 
+# The rest remain - as of now - uncracked.
 # 
 # splitting large password inputs into smaller chunks then iterating through them to compare hashes against the local hash
 # need to install legacycrypt - crypt(3) no longer supported in python3 crypt libraries
 # TODO
-# -  test timing and in-program reporting - X
-# - automate adding local split input password files into the pool - X
-# - finalized report and write to logfile - X 
+# - loop breaks when user discovered !!!!
 # - automate importing userdb/add command line switch
+# - add userdb import from a JSON file or a CSV file
+# - fix percentage complete
 
 # imports
 import legacycrypt
@@ -41,7 +42,11 @@ datestamp = f"{now.year}{now.month}{now.day}{now.hour}{now.minute}{now.second}"
 
 # datastores
 userdb = {'alana': 'XLhxUSodwL.V', 'billyb': 'JoGotXZk/v', 'carlc': 'HezNf0NIYm9J', 'darad': 'DhdGPUVK/3'}
+# import from file formatted as a dict. 
+# userfile = "myuserhashfile"
+# userdb =  open(userfile,'r').read().splitlines()
 outcomes = {}
+founduser = []
 # get the chunked password input files
 # static
 #passfiles = ['john8.av', 'john8.aw', 'john8.ax', 'john8.ay', 'john8.az', 'john8.ba', 'john8.bb', 'john8.bc', 'john8.bd', 'john8.be', 'john8.bf', 'john8.bj', 'john8.bs']
@@ -61,6 +66,8 @@ completedchunks = []
 total = len(passfiles)
 remaining =  total - len(completedchunks)
 totallines = 0
+correct_guesses = 0
+
 
 #start = attotime.attodatetime.now()
 #end = attotime.attodatetime.now()
@@ -72,12 +79,18 @@ print("Starting loop with passfiles",datetime.now())
 start = attotime.attodatetime.now()
 for chunkfile in passfiles:
     remaining =  total - len(completedchunks)
-    percentage = round(remaining / total, 1)
+    percentage = 100 - (round(remaining / total, 2) * 100)
     print(f"starting file {chunkfile}, Left to go: {remaining}/{total} {percentage} complete")
     chunk = open(chunkfile,'r').read().splitlines()
     lines = len(chunk)
     totallines = totallines + lines
     print(f"{chunk[:3]}, {lines:,} inputs in chunk, {totallines:,} total thus far")
+
+    # clean up already found users before starting run
+    if len(foundusers) > 0:
+        for user in foundusers:
+            userdb.pop(user)
+            foundusers.remove(user) 
 
     for k, v in userdb.items():
 	    SALT = v[:2]
@@ -86,12 +99,13 @@ for chunkfile in passfiles:
 	    for guess in chunk:
 	            if legacycrypt.crypt(guess, SALT)[:10] == v:
 	                    print('MATCH', k, v, guess)
+                            correct_guesses += 1
 	                    outcomes[k][v] = guess
-	                    userdb.pop(k)
+                            founduser.append(k)
 	                    break
     end = attotime.attodatetime.now()
     duration = round(end - start,4)
-    print(f"Completed chunk {chunkfile} {datetime.now()}  total time per chunk: {duration}" )
+    print(f"Completed chunk {chunkfile} {datetime.now()}  total time per chunk: {duration}. Correct guesses {correct_guesses}" )
     print(" ---------------- ")
     # clean up
     completedchunks.append(chunkfile)
