@@ -1,5 +1,6 @@
-# neanderthal brute force hash comparison v.0.0.3
+# neanderthal brute force hash comparison v.0.0.4
 #
+# NEW TIMING STUFF UNTESTED
 # some very old password databases using DES crypt(3) hashes will truncate the stored string from 13 chars down to 10 chars, including a 2 byte salt at the beginning
 # e.g.
 # properly formatted with be:
@@ -22,21 +23,61 @@
 # 
 # splitting large password inputs into smaller chunks then iterating through them to compare hashes against the local hash
 # need to install legacycrypt - crypt(3) no longer supported in python3 crypt libraries
+# TODO
+# -  test timing and in-program reporting - X
+# - automate adding local split input password files into the pool - X
+# - finalized report and write to logfile - X 
+# - automate importing userdb/add command line switch
+
+# imports
 import legacycrypt
 import os
+import attotime
+from datetime import datetime
+
+# date
+now = datetime.now()
+datestamp = f"{now.year}{now.month}{now.day}{now.hour}{now.minute}{now.second}"
 
 # datastores
 userdb = {'alana': 'XLhxUSodwL.V', 'billyb': 'JoGotXZk/v', 'carlc': 'HezNf0NIYm9J', 'darad': 'DhdGPUVK/3'}
 outcomes = {}
-passfiles = ['john8.av', 'john8.aw', 'john8.ax', 'john8.ay', 'john8.az', 'john8.ba', 'john8.bb', 'john8.bc', 'john8.bd', 'john8.be', 'john8.bf', 'john8.bj', 'john8.bs']
+# get the chunked password input files
+# static
+#passfiles = ['john8.av', 'john8.aw', 'john8.ax', 'john8.ay', 'john8.az', 'john8.ba', 'john8.bb', 'john8.bc', 'john8.bd', 'john8.be', 'john8.bf', 'john8.bj', 'john8.bs']
+# Password Input File Imports
+# use unix split to slice the huge file into smaller, 200mb chunks with a consistent name
+# split --verbose -b200M john8  john8.
+passfiles = []
+# os.listdir('./')
+PATH='./'
+for (root, dirs, file) in os.walk(PATH):
+    for f in file:
+        if 'john8.' in f:
+            passfiles.append(f)
+
+# housekeeping
 completedchunks = []
+total = len(passfiles)
+remaining =  total - len(completedchunks)
+totallines = 0
+
+#start = attotime.attodatetime.now()
+#end = attotime.attodatetime.now()
+#duration = end - start
+#print('starting at:', datetime.now())
 
 # main
-print("Starting loop with passfiles")
+print("Starting loop with passfiles",datetime.now())
+start = attotime.attodatetime.now()
 for chunkfile in passfiles:
-    print(chunkfile)
+    remaining =  total - len(completedchunks)
+    percentage = round(remaining / total, 1)
+    print(f"starting file {chunkfile}, Left to go: {remaining}/{total} {percentage} complete")
     chunk = open(chunkfile,'r').read().splitlines()
-    print(chunk[:3])
+    lines = len(chunk)
+    totallines = totallines + lines
+    print(f"{chunk[:3]}, {lines:,} inputs in chunk, {totallines:,} total thus far")
 
     for k, v in userdb.items():
 	    SALT = v[:2]
@@ -48,9 +89,19 @@ for chunkfile in passfiles:
 	                    outcomes[k][v] = guess
 	                    userdb.pop(k)
 	                    break
-    print('Completed chunk',chunkfile)
-    
+    end = attotime.attodatetime.now()
+    duration = round(end - start,4)
+    print(f"Completed chunk {chunkfile} {datetime.now()}  total time per chunk: {duration}" )
+    print(" ---------------- ")
+    # clean up
     completedchunks.append(chunkfile)
     del chunk
-print("Completed run")
+print(f"Completed run, {datetime.now()}. {remaining}/{total} completed. {totallines:,} total tries.")
+print("Outcomes:")
 print(outcomes.items())
+
+# write out logfile
+with open(f"{datestamp}_crypt.log", 'w') as file:
+    file.write(str(outfile))
+
+
